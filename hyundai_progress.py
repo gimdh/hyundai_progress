@@ -2,9 +2,8 @@
 import sys, time
 
 from PyQt5.QtCore import QTimer, pyqtSlot
-from PyQt5.QtGui import QResizeEvent, QFontMetrics, QFont
+from PyQt5.QtGui import QResizeEvent, QFontMetrics
 from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel
-from PySide2.QtGui import QFont
 
 import hyundai_bot
 
@@ -45,9 +44,8 @@ class HyundaiProgress(QMainWindow):
         self.update_info()
         
         self.update_timer = QTimer(self)   
-        self.update_timer.setInterval(300000)
+        self.update_timer.start(300000)
         self.update_timer.timeout.connect(self.update_info) 
-
 
 
     def resizeEvent(self, resize_event: QResizeEvent) -> None:
