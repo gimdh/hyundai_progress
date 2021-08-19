@@ -1,0 +1,16 @@
+{
+    "driver_path": "웹드라이버 경로",
+
+    "login_uri": "https://www.hyundai.com/kr/ko/login",
+    "redirected_login_uri": "https://prd.kr-ccapi.hyundai.com/web/v1/user/signin",
+    "login_complete_uri": "https://www.hyundai.com/kr/ko/e/",
+    "contract_uri": "https://www.hyundai.com/kr/ko/e/mypage/contract",
+    "query_uri": "https://www.hyundai.com/kr/ko/gw/purchase/v1/purchase/order?pageNo=1&pageSize=5",
+
+    "email": "이메일 주소",
+    "password": "비밀번호",
+
+    "email_xpath": "//input[@type='email']",
+    "password_xpath": "//input[@type='password']",
+    "button_xpath": "//button[@type='button']"
+}
