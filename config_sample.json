@@ -1,5 +1,5 @@
 {
-    "driver_path": "웹드라이버 경로",
+    "driver_path": "",
 
     "main_uri": "https://www.hyundai.com/kr/ko/e/",
     "login_uri": "https://www.hyundai.com/kr/ko/login",

@@ -1,4 +1,4 @@
-import json, time
+import json, time, platform
 from types import SimpleNamespace
 
 from seleniumwire import webdriver
@@ -24,7 +24,19 @@ class HyundaiBot:
     def create_driver(self):
         options = webdriver.FirefoxOptions()
         options.add_argument('--headless')
-        self.driver = webdriver.Firefox(options=options, executable_path=self.config.driver_path)
+
+        if self.config.driver_path:
+            filename = self.config.driver_path
+        else:
+            filename = self.driver_for_system()
+        self.driver = webdriver.Firefox(options=options, executable_path=filename)
+
+
+    def driver_for_system(self):
+        machine, system = platform.machine(), platform.system()
+
+        filename = f'./drivers/geckodriver-{system}-{machine}'
+        return filename
 
 
     def login(self):
