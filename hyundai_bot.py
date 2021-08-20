@@ -28,7 +28,10 @@ class HyundaiBot:
 
 
     def login(self):
+        self.driver.get(self.config.main_uri)
+        time.sleep(1)
         self.driver.get(self.config.login_uri)
+        time.sleep(1)
         self.wait(self.config.redirected_login_uri)
 
         email_element = self.driver.find_element_by_xpath(self.config.email_xpath)
@@ -44,7 +47,7 @@ class HyundaiBot:
 
     def query_info(self):
         self.driver.get(self.config.contract_uri)
-        time.sleep(3)
+        time.sleep(1)
 
         for request in self.driver.requests:
             if request.response and request.url == self.config.query_uri:

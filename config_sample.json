@@ -1,6 +1,7 @@
 {
     "driver_path": "웹드라이버 경로",
 
+    "main_uri": "https://www.hyundai.com/kr/ko/e/",
     "login_uri": "https://www.hyundai.com/kr/ko/login",
     "redirected_login_uri": "https://prd.kr-ccapi.hyundai.com/web/v1/user/signin",
     "login_complete_uri": "https://www.hyundai.com/kr/ko/e/",
