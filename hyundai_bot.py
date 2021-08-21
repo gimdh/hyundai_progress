@@ -54,7 +54,8 @@ class HyundaiBot:
         password_element.send_keys(self.config.password)
         button_element.click()
 
-        self.wait(self.config.login_complete_uri)
+        self.wait(self.config.main_uri)
+        time.sleep(1)
 
 
     def query_info(self):

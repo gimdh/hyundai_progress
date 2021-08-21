@@ -4,7 +4,6 @@
     "main_uri": "https://www.hyundai.com/kr/ko/e/",
     "login_uri": "https://www.hyundai.com/kr/ko/login",
     "redirected_login_uri": "https://prd.kr-ccapi.hyundai.com/web/v1/user/signin",
-    "login_complete_uri": "https://www.hyundai.com/kr/ko/e/",
     "contract_uri": "https://www.hyundai.com/kr/ko/e/mypage/contract",
     "query_uri": "https://www.hyundai.com/kr/ko/gw/purchase/v1/purchase/order?pageNo=1&pageSize=5",
 
