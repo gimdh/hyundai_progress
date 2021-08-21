@@ -2,7 +2,7 @@
 내 차 출고가 현재 어떤 상태인지 5분 간격으로 업데이트하여 띄워줍니다.
 
 ## 스크린샷
-![스크린샷](https://github.com/gimdh/hyundai_progress/blob/master/screenshot/sample.png?raw=true)
+![스크린샷](https://raw.githubusercontent.com/gimdh/hyundai_progress/master/screenshot/sample.png)
 
 
 ## 사용법
