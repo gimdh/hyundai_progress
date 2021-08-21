@@ -1,21 +1,25 @@
 
-import sys, time
+import sys, time, json
+from types import SimpleNamespace
 
 from PyQt5.QtCore import QTimer, pyqtSlot
 from PyQt5.QtGui import QResizeEvent, QFontMetrics
 from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel
 
-import hyundai_bot
+import hyundai_bot, slack_client
 
 
 class HyundaiProgress(QMainWindow):
     def __init__(self, parent=None):
         super(HyundaiProgress, self).__init__(parent)
 
+        with open('config.json') as f:
+            self.config = json.load(f, object_hook=lambda d: SimpleNamespace(**d))
+        self.bot = hyundai_bot.HyundaiBot(self.config)
+        if self.config.enable_slack_dm:
+            self.slack_client = slack_client.SlackClient(self.config.slack_oauth_token, self.config.slack_ids)
+
         self.setStyleSheet("QMainWindow {background: 'black';} QLabel {color: 'white';}")
-
-        self.bot = hyundai_bot.HyundaiBot()
-
         self.widget = QWidget(self)
         self.setCentralWidget(self.widget)
 
@@ -90,7 +94,13 @@ class HyundaiProgress(QMainWindow):
 
         # self.name_label.setText(result.saleCarCtyNm)
         # self.color_label.setText(f'{result.xrclCtyNm} - {result.ieclCtyNm}')
-        self.state_label.setText(f'{result.cnttStNm} - {result.contractStateDetailName}')
+
+        old_state_text = self.state_label.text()
+        new_state_text = f'{result.cnttStNm} - {result.contractStateDetailName}'
+        self.state_label.setText(new_state_text)
+
+        if self.slack_client and old_state_text != new_state_text:
+            self.slack_client.send_message(new_state_text)
         
         tiemstamp = time.strftime('%m/%d %H:%M:%S', time.localtime())
         self.last_update_time_label.setText(f'Last Update: {tiemstamp}')

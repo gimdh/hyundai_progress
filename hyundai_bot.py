@@ -6,9 +6,8 @@ from seleniumwire import webdriver
 
 
 class HyundaiBot:
-    def __init__(self, config_file='config.json'):
-        with open(config_file) as f:
-            self.config = json.load(f, object_hook=lambda d: SimpleNamespace(**d))
+    def __init__(self, config):
+        self.config = config
 
 
     def get_info(self):

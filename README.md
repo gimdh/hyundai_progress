@@ -23,7 +23,11 @@
 4. `python main.py`로 실행합니다.
 
 
-## 커스텀
+## 사용자화
+
+
+### 슬랙 연결
+`config.json`에서 `enable_slack_dm`을 `true`로 설정한 후, `slack_oauth_token`에는 슬랙 워크스페이스에 추가한 앱의 OAuth 토큰을 `slack_ids`에는 멤버 ID나 채널 ID를 추가합니다. `chat.postMessage` API를 사용하므로 `chat:write`를 OAuth Scope에 추가해야 합니다. 
 
 
 ### 다른 브라우저 사용

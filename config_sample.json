@@ -10,6 +10,12 @@
     "email": "이메일 주소",
     "password": "비밀번호",
 
+    "enable_slack_dm": false,
+    "slack_oauth_token": "슬랙 App OAuth 토큰",
+    "slack_ids": [
+        "슬랙 멤버/채널 ID"
+    ],
+
     "email_xpath": "//input[@type='email']",
     "password_xpath": "//input[@type='password']",
     "button_xpath": "//button[@type='button']"
