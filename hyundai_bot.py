@@ -1,4 +1,4 @@
-import json, time, platform
+import json, time, platform, zlib
 from types import SimpleNamespace
 
 from seleniumwire import webdriver
@@ -63,7 +63,11 @@ class HyundaiBot:
 
         for request in self.driver.requests:
             if request.response and request.url == self.config.query_uri:
-                decoded_info = request.response.body.decode('utf-8')
+                try:
+                    decoded_info = request.response.body.decode('utf-8')
+                except UnicodeDecodeError:
+                    decoded_info = zlib.decompress(request.response.body, 15+32).decode('utf-8')
+                    
                 return json.loads(decoded_info, object_hook=lambda d: SimpleNamespace(**d))
 
 
